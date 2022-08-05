@@ -22,10 +22,10 @@ jobs:
     - name: Install Canvas
       run: npm i canvas
     - name: Run
-      run: node /src/main/resources/assets/cloudtech/textures/item/cloud
+      run: node $GITHUB_WORKSPACE/src/main/resources/assets/cloudtech/textures/item/cloud
     - name: Upload
       uses: actions/upload-artifact@v3.1.0
       with:
         name: cloud
-        path: /src/main/resources/assets/cloudtech/textures/item
+        path: $GITHUB_WORKSPACE/src/main/resources/assets/cloudtech/textures/item
     
