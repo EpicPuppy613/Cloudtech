@@ -17,14 +17,15 @@ const HEX = [
 
 const dir = path.relative(process.cwd(), __dirname);
 const image = new Image();
-image.src = fs.readFileSync(dir + "/white_cloud.png");
-
-for (let c = 0; c < COLORS.length; c++) {
-    ctx.clearRect(0, 0, 16, 16);
-    ctx.drawImage(image, 0, 0);
-    ctx.globalCompositeOperation = "multiply";
-    ctx.fillStlye = HEX[c];
-    ctx.fillRect(0, 0, 16, 16);
-    fs.writeFileSync(dir +"/" + COLORS[c] + "_cloud.png", draw.toBuffer());
-    ctx.globalCompositeOperation = "source-over";
+image.src = dir + "/white_cloud.png";
+image.onload = function () {
+    for (let c = 0; c < COLORS.length; c++) {
+        ctx.clearRect(0, 0, 16, 16);
+        ctx.drawImage(image, 0, 0);
+        ctx.globalCompositeOperation = "multiply";
+        ctx.fillStlye = HEX[c];
+        ctx.fillRect(0, 0, 16, 16);
+        fs.writeFileSync(dir +"/" + COLORS[c] + "_cloud.png", draw.toBuffer());
+        ctx.globalCompositeOperation = "source-over";
+    }
 }
