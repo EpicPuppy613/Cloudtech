@@ -24,6 +24,6 @@ for (let c = 0; c < COLORS.length; c++) {
     ctx.globalCompositeOperation = "multiply";
     ctx.fillStlye = HEX[c];
     ctx.fillRect(0, 0, 16, 16);
-    fs.writeFileSync("./" + COLORS[c] + "_cloud.png", draw.toBuffer());
+    fs.writeFileSync(dir +"\\" + COLORS[c] + "_cloud.png", draw.toBuffer());
     ctx.globalCompositeOperation = "source-over";
 }
