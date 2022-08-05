@@ -16,7 +16,8 @@ const HEX = [
 ]
 
 const dir = path.relative(process.cwd(), __dirname);
-const image = fs.readFileSync(dir + "/white_cloud.png");
+const image = new Image();
+image.src = fs.readFileSync(dir + "/white_cloud.png");
 
 for (let c = 0; c < COLORS.length; c++) {
     ctx.clearRect(0, 0, 16, 16);
