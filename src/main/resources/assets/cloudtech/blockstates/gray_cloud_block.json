@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "cloudtech:block/gray_cloud_block"
+        }
+    }
+}

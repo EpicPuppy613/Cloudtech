@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 import static dev.epicpuppy.cloudtech.Cloudtech.COLORS;
 
-public class Items {
+public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Cloudtech.MOD_ID);
 
     public static RegistryObject<Item>[] generateClouds(String[] colors, DeferredRegister<Item> register) {

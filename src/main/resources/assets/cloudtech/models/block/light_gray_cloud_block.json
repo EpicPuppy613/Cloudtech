@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "cloudtech:block/light_gray_cloud_block"
+    }
+}

@@ -14,5 +14,23 @@
   "item.cloudtech.purple_cloud": "Purple Cloud",
   "item.cloudtech.magenta_cloud": "Magenta Cloud",
   "item.cloudtech.pink_cloud": "Pink Cloud",
-  "item.cloudtech.brown_cloud": "Brown Cloud"
+  "item.cloudtech.brown_cloud": "Brown Cloud",
+
+  "block.cloudtech.white_cloud_block": "White Cloud Block",
+  "block.cloudtech.light_gray_cloud_block": "Light Cloud Block",
+  "block.cloudtech.gray_cloud_block": "Gray Cloud Block",
+  "block.cloudtech.black_cloud_block": "Black Cloud Block",
+  "block.cloudtech.red_cloud_block": "Red Cloud Block",
+  "block.cloudtech.orange_cloud_block": "Orange Cloud Block",
+  "block.cloudtech.yellow_cloud_block": "Yellow Cloud Block",
+  "block.cloudtech.lime_cloud_block": "Lime Cloud Block",
+  "block.cloudtech.green_cloud_block": "Green Cloud Block",
+  "block.cloudtech.cyan_cloud_block": "Cyan Cloud Block",
+  "block.cloudtech.light_blue_cloud_block": "Light Cloud Block",
+  "block.cloudtech.blue_cloud_block": "Blue Cloud Block",
+  "block.cloudtech.purple_cloud_block": "Purple Cloud Block",
+  "block.cloudtech.magenta_cloud_block": "Magenta Cloud Block",
+  "block.cloudtech.pink_cloud_block": "Pink Cloud Block",
+  "block.cloudtech.brown_cloud_block": "Brown Cloud Block"
+
 }
