@@ -13,9 +13,11 @@ const HEX = [
     "#792AAC", "#BE44B4", "#ED8DAD", "#724728"
 ]
 
+const image = fs.readFileSync("./white_cloud.png");
+
 for (let c = 0; c < COLORS.length; c++) {
     ctx.clearRect(0, 0, 16, 16);
-    ctx.drawImage("./white_cloud.png", 0, 0);
+    ctx.drawImage(image, 0, 0);
     ctx.globalCompositeOperation = "multiply";
     ctx.fillStlye = HEX[c];
     ctx.fillRect(0, 0, 16, 16);
