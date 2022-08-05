@@ -1,4 +1,6 @@
 const canvas = require('canvas');
+const process = require('process');
+const path = require('path');
 const fs = require("fs");
 const draw = canvas.createCanvas(16, 16);
 const ctx = draw.getContext('2d');
@@ -13,7 +15,8 @@ const HEX = [
     "#792AAC", "#BE44B4", "#ED8DAD", "#724728"
 ]
 
-const image = fs.readFileSync("./white_cloud.png");
+const dir = path.relative(process.cwd(), __dirname);
+const image = fs.readFileSync(dir + "\\white_cloud.png");
 
 for (let c = 0; c < COLORS.length; c++) {
     ctx.clearRect(0, 0, 16, 16);
