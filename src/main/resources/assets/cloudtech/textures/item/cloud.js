@@ -16,7 +16,7 @@ const HEX = [
 ]
 
 const dir = path.relative(process.cwd(), __dirname);
-const image = new Image();
+const image = new canvas.Image();
 image.src = dir + "/white_cloud.png";
 image.onload = function () {
     for (let c = 0; c < COLORS.length; c++) {
