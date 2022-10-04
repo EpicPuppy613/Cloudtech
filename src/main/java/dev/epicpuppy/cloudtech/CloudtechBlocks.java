@@ -1,13 +1,12 @@
-package dev.epicpuppy.cloudtech.block;
+package dev.epicpuppy.cloudtech;
 
 import dev.epicpuppy.cloudtech.Cloudtech;
-import dev.epicpuppy.cloudtech.item.CloudtechItems;
+import dev.epicpuppy.cloudtech.CloudtechItems;
+import dev.epicpuppy.cloudtech.block.CloudtechBlockItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;

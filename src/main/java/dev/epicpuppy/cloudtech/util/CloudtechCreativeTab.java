@@ -1,6 +1,6 @@
 package dev.epicpuppy.cloudtech.util;
 
-import dev.epicpuppy.cloudtech.item.CloudtechItems;
+import dev.epicpuppy.cloudtech.CloudtechItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 

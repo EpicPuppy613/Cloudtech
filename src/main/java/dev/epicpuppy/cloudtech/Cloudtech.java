@@ -1,16 +1,11 @@
 package dev.epicpuppy.cloudtech;
 
 import com.mojang.logging.LogUtils;
-import dev.epicpuppy.cloudtech.block.CloudtechBlocks;
-import dev.epicpuppy.cloudtech.item.CloudtechItem;
-import dev.epicpuppy.cloudtech.item.CloudtechItems;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;

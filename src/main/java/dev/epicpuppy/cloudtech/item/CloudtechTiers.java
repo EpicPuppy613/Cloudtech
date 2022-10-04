@@ -1,6 +1,7 @@
 package dev.epicpuppy.cloudtech.item;
 
 import dev.epicpuppy.cloudtech.Cloudtech;
+import dev.epicpuppy.cloudtech.CloudtechItems;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeTier;
 

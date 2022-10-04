@@ -1,11 +1,11 @@
-package dev.epicpuppy.cloudtech.item;
+package dev.epicpuppy.cloudtech;
 
+import dev.epicpuppy.cloudtech.item.*;
+import dev.epicpuppy.cloudtech.item.custom.RainbowCloudItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
-import dev.epicpuppy.cloudtech.Cloudtech;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -24,6 +24,7 @@ public class CloudtechItems {
     public static final RegistryObject<CloudAxeItem>[] AXES = generateAxes(COLORS, ITEMS);
     public static final RegistryObject<CloudShovelItem>[] SHOVELS = generateShovels(COLORS, ITEMS);
     public static final RegistryObject<CloudHoeItem>[] HOES = generateHoes(COLORS, ITEMS);
+    public static final RegistryObject<RainbowCloudItem> RAINBOW_CLOUD = ITEMS.register("rainbow_cloud", () -> new RainbowCloudItem(new Item.Properties().tab(CLOUDTECH_TAB)));
 
     public static RegistryObject<Item>[] generateClouds(String[] colors, DeferredRegister<Item> register) {
         RegistryObject<Item>[] clouds = new RegistryObject[colors.length];
@@ -114,35 +115,27 @@ public class CloudtechItems {
     public static void registerColors() {
         ItemColors itemColors = Minecraft.getInstance().getItemColors();
 
+        itemColors.register((stack, tint) -> RAINBOW_CLOUD.get().getColor(tint), RAINBOW_CLOUD.get());
+
         for (RegistryObject<CloudSwordItem> sword : SWORDS) {
             CloudSwordItem item = sword.get();
-            itemColors.register((stack, tint) -> {
-                return item.getColor(tint);
-            }, item);
+            itemColors.register((stack, tint) -> item.getColor(tint), item);
         }
         for (RegistryObject<CloudPickaxeItem> pickaxe : PICKAXES) {
             CloudPickaxeItem item = pickaxe.get();
-            itemColors.register((stack, tint) -> {
-                return item.getColor(tint);
-            }, item);
+            itemColors.register((stack, tint) -> item.getColor(tint), item);
         }
         for (RegistryObject<CloudAxeItem> axe : AXES) {
             CloudAxeItem item = axe.get();
-            itemColors.register((stack, tint) -> {
-                return item.getColor(tint);
-            }, item);
+            itemColors.register((stack, tint) -> item.getColor(tint), item);
         }
         for (RegistryObject<CloudShovelItem> shovel : SHOVELS) {
             CloudShovelItem item = shovel.get();
-            itemColors.register((stack, tint) -> {
-                return item.getColor(tint);
-            }, item);
+            itemColors.register((stack, tint) -> item.getColor(tint), item);
         }
         for (RegistryObject<CloudHoeItem> hoe : HOES) {
             CloudHoeItem item = hoe.get();
-            itemColors.register((stack, tint) -> {
-                return item.getColor(tint);
-            }, item);
+            itemColors.register((stack, tint) -> item.getColor(tint), item);
         }
     }
 
