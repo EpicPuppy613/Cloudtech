@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#"
+    ],
+    "key": {
+        "#": {
+            "item": "cloudtech:black_cloud_block"
+        }
+    },
+    "result": {
+        "item": "cloudtech:black_cloud",
+        "count": 9
+    }
+}

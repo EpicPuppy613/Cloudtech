@@ -1,0 +1,7 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "cloudtech:item/cloud_pickaxe_handle",
+    "layer1": "cloudtech:item/cloud_pickaxe_color"
+  }
+}

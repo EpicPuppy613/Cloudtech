@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "cloudtech:white_cloud_block",
+    "cloudtech:light_gray_cloud_block",
+    "cloudtech:gray_cloud_block",
+    "cloudtech:black_cloud_block",
+    "cloudtech:red_cloud_block",
+    "cloudtech:orange_cloud_block",
+    "cloudtech:yellow_cloud_block",
+    "cloudtech:lime_cloud_block",
+    "cloudtech:green_cloud_block",
+    "cloudtech:cyan_cloud_block",
+    "cloudtech:light_blue_cloud_block",
+    "cloudtech:blue_cloud_block",
+    "cloudtech:purple_cloud_block",
+    "cloudtech:magenta_cloud_block",
+    "cloudtech:pink_cloud_block",
+    "cloudtech:brown_cloud_block"
+  ]
+}

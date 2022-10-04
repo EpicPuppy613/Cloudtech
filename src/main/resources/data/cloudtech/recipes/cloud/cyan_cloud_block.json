@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "cloudtech:cyan_cloud"
+        }
+    },
+    "result": {
+        "item": "cloudtech:cyan_cloud_block"
+    }
+}

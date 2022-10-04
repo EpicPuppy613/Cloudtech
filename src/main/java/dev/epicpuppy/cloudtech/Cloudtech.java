@@ -1,10 +1,16 @@
 package dev.epicpuppy.cloudtech;
 
 import com.mojang.logging.LogUtils;
-import dev.epicpuppy.cloudtech.block.ModBlocks;
-import dev.epicpuppy.cloudtech.item.ModItems;
+import dev.epicpuppy.cloudtech.block.CloudtechBlocks;
+import dev.epicpuppy.cloudtech.item.CloudtechItem;
+import dev.epicpuppy.cloudtech.item.CloudtechItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -18,39 +24,63 @@ import org.slf4j.Logger;
 public class Cloudtech
 {
     public static final String[] COLORS = {
-            "white", "light_gray", "gray", "black", "red", "orange", "yellow", "lime",
-            "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink", "brown"
+            "white", "light_gray", "gray", "red", "orange", "yellow", "lime", "green",
+            "cyan", "light_blue", "blue", "purple", "magenta", "pink", "brown", "black"
     };
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String MOD_ID = "cloudtech";
+    public ItemColors itemColors;
+
+    public static final class Stats {
+        public static final Integer[] LEVEL = {1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5};
+        public static final Integer[] USES = {100, 125, 150, 200, 300, 400, 500, 1200, 1400, 1600, 1800, 2000, 2250, 2500, 2750, 3000};
+        public static final Float[] SPEED = {4.0f, 4.5f, 5.0f, 6.0f, 6.5f, 7.0f, 7.5f, 8.0f, 8.25f, 8.5f, 8.75f, 9.0f, 9.25f, 9.5f, 9.75f, 10.0f};
+        public static final Float[] DAMAGE = {0.0f, 0.5f, 1.0f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f, 4.25f, 4.5f, 4.75f, 5.0f, 5.25f, 5.5f, 5.75f, 6.0f};
+        public static final Integer[] ENCHANTING = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30};
+        public static final TagKey[] TAGS = {
+                BlockTags.NEEDS_STONE_TOOL, BlockTags.NEEDS_STONE_TOOL, BlockTags.NEEDS_STONE_TOOL, BlockTags.NEEDS_IRON_TOOL,
+                BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_DIAMOND_TOOL,
+                BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL,
+                BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL
+        };
+    }
+
 
     public Cloudtech()
     {
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.register(eventBus);
-        ModBlocks.register(eventBus);
+        CloudtechItems.register(eventBus);
+        CloudtechBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
         int c = 0;
         for (String color : COLORS) {
-            ItemBlockRenderTypes.setRenderLayer(ModBlocks.CLOUD_BLOCKS[c].get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(CloudtechBlocks.CLOUD_BLOCKS[c].get(), RenderType.translucent());
             c++;
         }
+
+        CloudtechItems.registerColors();
+
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("Hello from setup");
+    }
+
+    public ItemColors getItemColors() {
+        return this.itemColors;
     }
 
 }
