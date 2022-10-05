@@ -5,6 +5,8 @@ import dev.epicpuppy.cloudtech.item.custom.RainbowCloudItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

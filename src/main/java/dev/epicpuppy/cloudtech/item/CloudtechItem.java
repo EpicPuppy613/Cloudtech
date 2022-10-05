@@ -27,12 +27,8 @@ public class CloudtechItem extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        if (Screen.hasShiftDown()) {
-            pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
-                    Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
-        } else {
-            pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.view"));
-        }
+        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
+                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
     }
 
     @Override

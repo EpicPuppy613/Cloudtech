@@ -36,12 +36,13 @@ public class CloudSwordItem extends SwordItem {
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         if (Screen.hasShiftDown()) {
-
-            pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
-                    Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
+            pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.durability").withStyle(
+                    Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))).append(String.valueOf(pStack.getMaxDamage() - pStack.getDamageValue())));
         } else {
             pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.view"));
         }
+        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
+                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
     }
 
     @Override

@@ -151,6 +151,6 @@
   "tier.cloudtech.t15": "Tier 16",
 
   "tooltip.cloudtech.view": "Press §eSHIFT§r for more info",
-  "tooltip.cloudtech.debug": "Debug Item"
-
+  "tooltip.cloudtech.debug": "Debug Item",
+  "tooltip.cloudtech.durability": "Durability: "
 }

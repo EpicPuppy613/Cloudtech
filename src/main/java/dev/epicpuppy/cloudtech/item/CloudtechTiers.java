@@ -11,8 +11,8 @@ public class CloudtechTiers {
         ForgeTier[] tiers = new ForgeTier[16];
         for (int t = 0; t < 16; t++) {
             int finalT = t;
-            tiers[t] = new ForgeTier(Cloudtech.Stats.LEVEL[t], Cloudtech.Stats.USES[t], Cloudtech.Stats.SPEED[t],
-                    Cloudtech.Stats.DAMAGE[t], Cloudtech.Stats.ENCHANTING[t], Cloudtech.Stats.TAGS[t],
+            tiers[t] = new ForgeTier(Cloudtech.ToolStats.LEVEL[t], Cloudtech.ToolStats.USES[t], Cloudtech.ToolStats.SPEED[t],
+                    Cloudtech.ToolStats.DAMAGE[t], Cloudtech.ToolStats.ENCHANTING[t], Cloudtech.ToolStats.TAGS[t],
                     () -> Ingredient.of(CloudtechItems.CLOUDS[finalT].get()));
         }
         return tiers;
