@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CloudPickaxeItem extends PickaxeItem {
+public class CloudPickaxeItem extends PickaxeItem implements ICloudItem {
     public final CloudTier cTier;
     private final int toolColor;
 
@@ -26,6 +26,7 @@ public class CloudPickaxeItem extends PickaxeItem {
         return this.cTier;
     }
 
+    @Override
     public int getColor(int pTintIndex) {
         return (pTintIndex == 0 ? 16777215 : this.toolColor);
     }

@@ -1,8 +1,6 @@
 package dev.epicpuppy.cloudtech.item;
 
 import dev.epicpuppy.cloudtech.util.CloudTier;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CloudSwordItem extends SwordItem {
+public class CloudSwordItem extends SwordItem implements ICloudItem {
     public final CloudTier cTier;
     private final int toolColor;
 
@@ -29,6 +27,8 @@ public class CloudSwordItem extends SwordItem {
         return this.cTier;
     }
 
+
+    @Override
     public int getColor(int pTintIndex) {
         return (pTintIndex == 0 ? 16777215 : this.toolColor);
     }

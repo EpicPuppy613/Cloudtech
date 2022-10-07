@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CloudShovelItem extends ShovelItem {
+public class CloudShovelItem extends ShovelItem implements ICloudItem {
     public final CloudTier cTier;
     private final int toolColor;
 
@@ -25,6 +25,7 @@ public class CloudShovelItem extends ShovelItem {
         return this.cTier;
     }
 
+    @Override
     public int getColor(int pTintIndex) {
         return (pTintIndex == 0 ? 16777215 : this.toolColor);
     }
