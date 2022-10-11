@@ -4,18 +4,13 @@ import dev.epicpuppy.cloudtech.item.*;
 import dev.epicpuppy.cloudtech.item.custom.RainbowCloudItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.NotNull;
 
 import static dev.epicpuppy.cloudtech.Cloudtech.COLORS;
 import static dev.epicpuppy.cloudtech.util.CloudtechCreativeTab.CLOUDTECH_GEAR;
@@ -115,7 +110,6 @@ public class CloudtechItems {
         }
         return hoes;
     }
-
     //HELMET
     public static RegistryObject<CloudArmorItem>[] generateHelmets(String[] colors, DeferredRegister<Item> register) {
         RegistryObject<CloudArmorItem>[] helmets = new RegistryObject[colors.length];
@@ -129,7 +123,6 @@ public class CloudtechItems {
         }
         return helmets;
     }
-
     //CHESTPLATE
     public static RegistryObject<CloudArmorItem>[] generateChestplates(String[] colors, DeferredRegister<Item> register) {
         RegistryObject<CloudArmorItem>[] chestplates = new RegistryObject[colors.length];
@@ -143,7 +136,6 @@ public class CloudtechItems {
         }
         return chestplates;
     }
-
     //LEGGINGS
     public static RegistryObject<CloudArmorItem>[] generateLeggings(String[] colors, DeferredRegister<Item> register) {
         RegistryObject<CloudArmorItem>[] leggings = new RegistryObject[colors.length];
@@ -157,7 +149,6 @@ public class CloudtechItems {
         }
         return leggings;
     }
-
     //BOOTS
     public static RegistryObject<CloudArmorItem>[] generateBoots(String[] colors, DeferredRegister<Item> register) {
         RegistryObject<CloudArmorItem>[] boots = new RegistryObject[colors.length];
