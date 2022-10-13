@@ -8,26 +8,24 @@ import net.minecraft.world.level.Level;
 
 public class RainbowCloudItem extends CloudtechItem {
 
-    private int tier = 0;
-    private int color;
-    private int cDelay = 4;
+    private static int tier = 0;
+    private static int color;
+    private static int cDelay = 4;
 
     public RainbowCloudItem(Properties pProperties) {
         super(CloudTier.T0, pProperties);
         this.color = cTier.tColor;
     }
 
-    @Override
-    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
-        if (--this.cDelay <= 0) {
-            this.tier++;
-            if (this.tier > 15) {
-                this.tier = 0;
+    public static void tick() {
+        if (--cDelay <= 0) {
+            tier++;
+            if (tier > 15) {
+                tier = 0;
             }
-            this.cTier = CloudTier.valueOf("T" + this.tier);
-            this.color = this.cTier.tColor;
-            this.cDelay = 4;
+            cTier = CloudTier.valueOf("T" + tier);
+            color = cTier.tColor;
+            cDelay = 4;
         }
     }
 

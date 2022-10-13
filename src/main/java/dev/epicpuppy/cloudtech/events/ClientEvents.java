@@ -1,10 +1,17 @@
 package dev.epicpuppy.cloudtech.events;
 
-import net.minecraftforge.client.event.InputEvent;
+import dev.epicpuppy.cloudtech.Cloudtech;
+import dev.epicpuppy.cloudtech.item.custom.RainbowCloudItem;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+@Mod.EventBusSubscriber(modid=Cloudtech.MOD_ID)
 public class ClientEvents {
 
-    public static void onKeyInput(InputEvent.KeyInputEvent event) {
-
+    @SubscribeEvent
+    public static void onServerTick(TickEvent.ServerTickEvent event) {
+        RainbowCloudItem.tick();
     }
+
 }

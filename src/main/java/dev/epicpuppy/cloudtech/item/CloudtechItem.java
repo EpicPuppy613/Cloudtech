@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CloudtechItem extends Item {
 
-    public CloudTier cTier;
+    public static CloudTier cTier;
 
     public CloudtechItem(CloudTier cTier, Properties pProperties) {
         super(pProperties);

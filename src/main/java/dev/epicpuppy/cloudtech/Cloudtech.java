@@ -1,6 +1,7 @@
 package dev.epicpuppy.cloudtech;
 
 import com.mojang.logging.LogUtils;
+import dev.epicpuppy.cloudtech.events.ClientEvents;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -73,6 +74,8 @@ public class Cloudtech
         }
 
         CloudtechItems.registerColors();
+
+
 
     }
 
