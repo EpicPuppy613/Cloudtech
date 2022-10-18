@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "cloudtech:item/magenta_cloud"
+        "layer0": "cloudtech:item/cloud"
     }
 }

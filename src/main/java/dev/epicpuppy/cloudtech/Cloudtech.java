@@ -74,9 +74,6 @@ public class Cloudtech
         }
 
         CloudtechItems.registerColors();
-
-
-
     }
 
     private void setup(final FMLCommonSetupEvent event)

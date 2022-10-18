@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs');
 
 const COLORS = [
     "white", "light_gray", "gray", "black", "red", "orange", "yellow", "lime",
@@ -13,10 +13,8 @@ const langfile = fs.readFileSync("en_us_prev.json");
 const lang = JSON.parse(langfile);
 
 for (var c = 0; c < COLORS.length; c++) {
-    lang["item.cloudtech." + COLORS[c] + "_cloud_helmet"] = COLORS_NAME[c] + " Cloud Helmet";
-    lang["item.cloudtech." + COLORS[c] + "_cloud_chestplate"] = COLORS_NAME[c] + " Cloud Chestplate";
-    lang["item.cloudtech." + COLORS[c] + "_cloud_leggings"] = COLORS_NAME[c] + " Cloud Leggings";
-    lang["item.cloudtech." + COLORS[c] + "_cloud_boots"] = COLORS_NAME[c] + " Cloud Boots";
+    lang["item.cloudtech." + COLORS[c] + "_cloud_ingot"] = COLORS_NAME[c] + " Cloud Ingot";
+    lang["item.cloudtech." + COLORS[c] + "_cloud_core"] = COLORS_NAME[c] + " Cloud Core";
 }
 
 fs.writeFileSync("en_us.json", JSON.stringify(lang, null, 4));

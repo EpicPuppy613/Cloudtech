@@ -19,7 +19,9 @@ import static dev.epicpuppy.cloudtech.util.CloudtechCreativeTab.CLOUDTECH_TAB;
 public class CloudtechItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Cloudtech.MOD_ID);
 
-    public static final RegistryObject<Item>[] CLOUDS = generateClouds(COLORS, ITEMS);
+    public static final RegistryObject<CloudtechItem>[] CLOUDS = generateClouds(COLORS, ITEMS);
+    public static final RegistryObject<CloudtechItem>[] INGOTS = generateIngots(COLORS, ITEMS);
+    public static final RegistryObject<CloudtechItem>[] CORES = generateCores(COLORS, ITEMS);
     public static final RegistryObject<CloudSwordItem>[] SWORDS = generateSwords(COLORS, ITEMS);
     public static final RegistryObject<CloudPickaxeItem>[] PICKAXES = generatePickaxes(COLORS, ITEMS);
     public static final RegistryObject<CloudAxeItem>[] AXES = generateAxes(COLORS, ITEMS);
@@ -31,8 +33,8 @@ public class CloudtechItems {
     public static final RegistryObject<CloudArmorItem>[] BOOTS = generateBoots(COLORS, ITEMS);
     public static final RegistryObject<RainbowCloudItem> RAINBOW_CLOUD = ITEMS.register("rainbow_cloud", () -> new RainbowCloudItem(new Item.Properties().tab(CLOUDTECH_TAB)));
 
-    public static RegistryObject<Item>[] generateClouds(String[] colors, DeferredRegister<Item> register) {
-        RegistryObject<Item>[] clouds = new RegistryObject[colors.length];
+    public static RegistryObject<CloudtechItem>[] generateClouds(String[] colors, DeferredRegister<Item> register) {
+        RegistryObject<CloudtechItem>[] clouds = new RegistryObject[colors.length];
         int c = 0;
         for (String color : colors) {
             int finalC = c;
@@ -41,6 +43,30 @@ public class CloudtechItems {
             c++;
         }
         return clouds;
+    }
+
+    public static RegistryObject<CloudtechItem>[] generateIngots(String[] colors, DeferredRegister<Item> register) {
+        RegistryObject<CloudtechItem>[] ingots = new RegistryObject[colors.length];
+        int c = 0;
+        for (String color : colors) {
+            int finalC = c;
+            ingots[c] = register.register(color + "_cloud_ingot", () ->
+                    new CloudtechItem(CloudTier.valueOf("T" + finalC), new Item.Properties().tab(CLOUDTECH_TAB)));
+            c++;
+        }
+        return ingots;
+    }
+
+    public static RegistryObject<CloudtechItem>[] generateCores(String[] colors, DeferredRegister<Item> register) {
+        RegistryObject<CloudtechItem>[] cores = new RegistryObject[colors.length];
+        int c = 0;
+        for (String color : colors) {
+            int finalC = c;
+            cores[c] = register.register(color + "_cloud_core", () ->
+                    new CloudtechItem(CloudTier.valueOf("T" + finalC), new Item.Properties().tab(CLOUDTECH_TAB)));
+            c++;
+        }
+        return cores;
     }
 
     //--TOOLS--
@@ -174,6 +200,9 @@ public class CloudtechItems {
 
         itemColors.register((stack, tint) -> RAINBOW_CLOUD.get().getColor(tint), RAINBOW_CLOUD.get());
 
+        registerColor(itemColors, CLOUDS);
+        registerColor(itemColors, INGOTS);
+        registerColor(itemColors, CORES);
         registerColor(itemColors, SWORDS);
         registerColor(itemColors, PICKAXES);
         registerColor(itemColors, AXES);
@@ -184,6 +213,7 @@ public class CloudtechItems {
         registerColor(itemColors, LEGGINGS);
         registerColor(itemColors, CHESTPLATES);
         registerColor(itemColors, BOOTS);
+
     }
 
     private static <T extends ICloudItem> void registerColor(ItemColors itemColors, RegistryObject<T>[] objects) {

@@ -9,6 +9,6 @@ for (const color of COLORS) {
     var model = {};
     model.parent = "item/generated";
     model.textures = {};
-    model.textures.layer0 = "cloudtech:item/cloud_boots";
-    fs.writeFileSync(color + "_cloud_boots.json", JSON.stringify(model, null, 4));
+    model.textures.layer0 = "cloudtech:item/cloud";
+    fs.writeFileSync(color + "_cloud.json", JSON.stringify(model, null, 4));
 }

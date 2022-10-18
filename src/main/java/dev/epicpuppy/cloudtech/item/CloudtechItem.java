@@ -12,17 +12,24 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CloudtechItem extends Item {
+public class CloudtechItem extends Item implements ICloudItem {
 
-    public static CloudTier cTier;
+    public CloudTier cTier;
+    private int toolColor;
 
     public CloudtechItem(CloudTier cTier, Properties pProperties) {
         super(pProperties);
         this.cTier = cTier;
+        this.toolColor = cTier.tColor;
     }
 
     public CloudTier getCloudTier() {
         return this.cTier;
+    }
+
+    @Override
+    public int getColor(int pTintIndex) {
+        return (pTintIndex == 0 ? this.toolColor : 16777215);
     }
 
     @Override
