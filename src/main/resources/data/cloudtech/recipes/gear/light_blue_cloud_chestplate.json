@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:cyan_cloud_chestplate"
+    },
+    "addition": {
+        "item": "cloudtech:light_blue_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:light_blue_cloud_chestplate"
+    }
+}

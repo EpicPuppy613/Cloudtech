@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " x ",
+        "xyx",
+        " x "
+    ],
+    "key": {
+        "x": {
+            "item": "cloudtech:white_cloud"
+        },
+        "y": {
+            "item": "cloudtech:white_cloud_block"
+        }
+    },
+    "result": {
+        "item": "cloudtech:white_cloud_ingot"
+    }
+}

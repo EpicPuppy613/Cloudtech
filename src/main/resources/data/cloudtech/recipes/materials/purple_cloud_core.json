@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "zxz",
+        "xyx",
+        "zxz"
+    ],
+    "key": {
+        "x": {
+            "item": "cloudtech:purple_cloud_ingot"
+        },
+        "y": {
+            "item": "cloudtech:blue_cloud_core"
+        },
+        "z": {
+            "item": "cloudtech:purple_cloud_block"
+        }
+    },
+    "result": {
+        "item": "cloudtech:purple_cloud_core"
+    }
+}

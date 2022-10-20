@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:yellow_cloud_leggings"
+    },
+    "addition": {
+        "item": "cloudtech:lime_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:lime_cloud_leggings"
+    }
+}

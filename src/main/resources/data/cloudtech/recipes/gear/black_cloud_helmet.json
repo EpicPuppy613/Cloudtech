@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:gray_cloud_helmet"
+    },
+    "addition": {
+        "item": "cloudtech:black_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:black_cloud_helmet"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:green_cloud_boots"
+    },
+    "addition": {
+        "item": "cloudtech:cyan_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:cyan_cloud_boots"
+    }
+}
