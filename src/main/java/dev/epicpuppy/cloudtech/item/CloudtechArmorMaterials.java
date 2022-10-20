@@ -18,7 +18,7 @@ public class CloudtechArmorMaterials {
             tiers[t] = new CloudArmorMaterial(
                     Cloudtech.COLORS[t], Cloudtech.ArmorStats.DURABILITY[t], protectionValues, Cloudtech.ToolStats.ENCHANTING[t],
                     SoundEvents.ARMOR_EQUIP_LEATHER, Cloudtech.ArmorStats.TOUGHNESS[t], Cloudtech.ArmorStats.KB_RESIST[t],
-                    () -> Ingredient.of(CloudtechItems.CLOUDS[finalT].get()));
+                    () -> Ingredient.of(CloudtechItems.INGOTS[finalT].get()));
         }
         return tiers;
     }

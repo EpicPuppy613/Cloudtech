@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:pink_cloud_pickaxe"
+    },
+    "addition": {
+        "item": "cloudtech:brown_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:brown_cloud_pickaxe"
+    }
+}

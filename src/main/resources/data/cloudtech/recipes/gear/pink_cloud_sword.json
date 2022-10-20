@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:magenta_cloud_sword"
+    },
+    "addition": {
+        "item": "cloudtech:pink_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:pink_cloud_sword"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "yz",
+        "xz",
+        "x "
+    ],
+    "key": {
+        "x": {
+            "item": "minecraft:stick"
+        },
+        "y": {
+            "item": "cloudtech:white_cloud_core"
+        },
+        "z": {
+            "item": "cloudtech:white_cloud_ingot"
+        }
+    },
+    "result": {
+        "item": "cloudtech:white_cloud_axe"
+    }
+}

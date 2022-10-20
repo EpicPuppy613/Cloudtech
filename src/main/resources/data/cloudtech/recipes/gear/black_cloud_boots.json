@@ -1,7 +1,7 @@
 {
     "type": "minecraft:smithing",
     "base": {
-        "item": "cloudtech:gray_cloud_boots"
+        "item": "cloudtech:brown_cloud_boots"
     },
     "addition": {
         "item": "cloudtech:black_cloud_core"

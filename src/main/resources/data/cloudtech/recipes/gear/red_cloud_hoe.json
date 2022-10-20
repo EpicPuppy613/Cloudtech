@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+        "item": "cloudtech:gray_cloud_hoe"
+    },
+    "addition": {
+        "item": "cloudtech:red_cloud_core"
+    },
+    "result": {
+        "item": "cloudtech:red_cloud_hoe"
+    }
+}
