@@ -1,6 +1,7 @@
 package dev.epicpuppy.cloudtech.item;
 
 import dev.epicpuppy.cloudtech.util.CloudTier;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;
@@ -30,6 +31,13 @@ public class CloudArmorItem extends ArmorItem implements ICloudItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if (Screen.hasShiftDown()) {
+
+            pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.durability").withStyle(
+                    Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))).append(String.valueOf(pStack.getMaxDamage() - pStack.getDamageValue())));
+        } else {
+            pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.view"));
+        }
         pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
                 Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
     }

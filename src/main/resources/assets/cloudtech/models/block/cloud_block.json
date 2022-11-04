@@ -1,0 +1,12 @@
+{
+  "parent": "cloudtech:block/color_block",
+  "textures": {
+    "particle": "cloudtech:block/cloud_block",
+    "down": "cloudtech:block/cloud_block",
+    "up": "cloudtech:block/cloud_block",
+    "north": "cloudtech:block/cloud_block",
+    "south": "cloudtech:block/cloud_block",
+    "east": "cloudtech:block/cloud_block",
+    "west": "cloudtech:block/cloud_block"
+  }
+}

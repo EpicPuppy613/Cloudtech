@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -69,11 +70,13 @@ public class Cloudtech
     private void clientSetup(final FMLClientSetupEvent event) {
         int c = 0;
         for (String color : COLORS) {
-            ItemBlockRenderTypes.setRenderLayer(CloudtechBlocks.CLOUD_BLOCKS[c].get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_BLOCKS[0][c].get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_FRAMES[0][c].get(), RenderType.translucent());
             c++;
         }
 
         CloudtechItems.registerColors();
+        CloudtechBlocks.registerColors();
     }
 
     private void setup(final FMLCommonSetupEvent event)

@@ -228,5 +228,21 @@
     "item.cloudtech.pink_cloud_ingot": "Pink Cloud Ingot",
     "item.cloudtech.pink_cloud_core": "Pink Cloud Core",
     "item.cloudtech.brown_cloud_ingot": "Brown Cloud Ingot",
-    "item.cloudtech.brown_cloud_core": "Brown Cloud Core"
+    "item.cloudtech.brown_cloud_core": "Brown Cloud Core",
+    "block.cloudtech.white_cloud_frame": "White Cloud Frame",
+    "block.cloudtech.light_gray_cloud_frame": "Light Gray Cloud Frame",
+    "block.cloudtech.gray_cloud_frame": "Gray Cloud Frame",
+    "block.cloudtech.black_cloud_frame": "Black Cloud Frame",
+    "block.cloudtech.red_cloud_frame": "Red Cloud Frame",
+    "block.cloudtech.orange_cloud_frame": "Orange Cloud Frame",
+    "block.cloudtech.yellow_cloud_frame": "Yellow Cloud Frame",
+    "block.cloudtech.lime_cloud_frame": "Lime Cloud Frame",
+    "block.cloudtech.green_cloud_frame": "Green Cloud Frame",
+    "block.cloudtech.cyan_cloud_frame": "Cyan Cloud Frame",
+    "block.cloudtech.light_blue_cloud_frame": "Light Blue Cloud Frame",
+    "block.cloudtech.blue_cloud_frame": "Blue Cloud Frame",
+    "block.cloudtech.purple_cloud_frame": "Purple Cloud Frame",
+    "block.cloudtech.magenta_cloud_frame": "Magenta Cloud Frame",
+    "block.cloudtech.pink_cloud_frame": "Pink Cloud Frame",
+    "block.cloudtech.brown_cloud_frame": "Brown Cloud Frame"
 }

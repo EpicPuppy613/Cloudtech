@@ -13,8 +13,7 @@ const langfile = fs.readFileSync("en_us_prev.json");
 const lang = JSON.parse(langfile);
 
 for (var c = 0; c < COLORS.length; c++) {
-    lang["item.cloudtech." + COLORS[c] + "_cloud_ingot"] = COLORS_NAME[c] + " Cloud Ingot";
-    lang["item.cloudtech." + COLORS[c] + "_cloud_core"] = COLORS_NAME[c] + " Cloud Core";
+    lang["block.cloudtech." + COLORS[c] + "_cloud_frame"] = COLORS_NAME[c] + " Cloud Frame";
 }
 
 fs.writeFileSync("en_us.json", JSON.stringify(lang, null, 4));
