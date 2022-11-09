@@ -32,4 +32,4 @@ jobs:
       uses: gradle/gradle-build-action@v2.3.3
       with:
         arguments: build
-        gradle-executable: ../gradlew
+        gradle-executable: $GITHUB_WORKSPACE/gradlew
