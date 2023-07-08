@@ -1,10 +1,8 @@
 package dev.epicpuppy.cloudtech.item.custom;
 
-import dev.epicpuppy.cloudtech.item.CloudtechItem;
 import dev.epicpuppy.cloudtech.item.ICloudItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
 import net.minecraft.network.chat.*;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -23,7 +21,7 @@ public class RainbowCloudItem extends Item implements ICloudItem {
 
     public RainbowCloudItem(Properties pProperties) {
         super(pProperties);
-        color = cTier.tColor;
+        color = cTier.intColor;
     }
 
     public static void tick() {
@@ -33,26 +31,26 @@ public class RainbowCloudItem extends Item implements ICloudItem {
                 tier = 0;
             }
             cTier = CloudTier.valueOf("T" + tier);
-            color = cTier.tColor;
+            color = cTier.intColor;
             cDelay = 4;
         }
     }
 
     @Override
     public int getColor(int pTintIndex) {
-        return (pTintIndex == 0 ? this.color : 16777215);
+        return (pTintIndex == 0 ? color : 16777215);
     }
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
-                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
+        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + cTier.tierName).withStyle(
+                Style.EMPTY.withColor(TextColor.parseColor(cTier.hexColor))));
     }
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack pStack) {
         MutableComponent nameComponent = (new TextComponent("").append(new TranslatableComponent(this.getDescriptionId(pStack)).getString()));
-        Style nameStyle = Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor));
+        Style nameStyle = Style.EMPTY.withColor(TextColor.parseColor(cTier.hexColor));
         nameComponent.setStyle(nameStyle);
         return nameComponent;
     }

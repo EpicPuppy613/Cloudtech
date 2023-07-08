@@ -22,6 +22,7 @@ public class CloudtechItems {
     public static final RegistryObject<CloudtechItem>[] CLOUDS = generateClouds(COLORS, ITEMS);
     public static final RegistryObject<CloudtechItem>[] INGOTS = generateIngots(COLORS, ITEMS);
     public static final RegistryObject<CloudtechItem>[] CORES = generateCores(COLORS, ITEMS);
+    public static final RegistryObject<CloudCatalystItem>[] CATALYSTS = generateCatalysts(COLORS, ITEMS);
     public static final RegistryObject<CloudSwordItem>[] SWORDS = generateSwords(COLORS, ITEMS);
     public static final RegistryObject<CloudPickaxeItem>[] PICKAXES = generatePickaxes(COLORS, ITEMS);
     public static final RegistryObject<CloudAxeItem>[] AXES = generateAxes(COLORS, ITEMS);
@@ -67,6 +68,18 @@ public class CloudtechItems {
             c++;
         }
         return cores;
+    }
+
+    public static RegistryObject<CloudCatalystItem>[] generateCatalysts(String[] colors, DeferredRegister<Item> register) {
+        RegistryObject<CloudCatalystItem>[] catalysts = new RegistryObject[colors.length];
+        int c = 0;
+        for (String color : colors) {
+            final int finalC = c;
+            catalysts[c] = register.register(color + "_cloud_catalyst", () ->
+                    new CloudCatalystItem(Cloudtech.CatalystStats.TIME[finalC], CloudtechBlocks.CLOUD_BLOCKS.BLOCKS[finalC].get(), CloudTier.valueOf("T" + finalC), new Item.Properties().tab(CLOUDTECH_TAB)));
+            c++;
+        }
+        return catalysts;
     }
 
     //--TOOLS--
@@ -203,6 +216,7 @@ public class CloudtechItems {
         registerColor(itemColors, CLOUDS);
         registerColor(itemColors, INGOTS);
         registerColor(itemColors, CORES);
+        registerColor(itemColors, CATALYSTS);
         registerColor(itemColors, SWORDS);
         registerColor(itemColors, PICKAXES);
         registerColor(itemColors, AXES);

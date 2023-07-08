@@ -2,7 +2,6 @@ package dev.epicpuppy.cloudtech.block;
 
 import dev.epicpuppy.cloudtech.item.ICloudItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -22,7 +21,7 @@ public class CloudtechBlockItem extends BlockItem implements ICloudItem {
     public CloudtechBlockItem(Block pBlock, CloudTier cTier, Properties pProperties) {
         super(pBlock, pProperties);
         this.cTier = cTier;
-        this.bColor = cTier.tColor;
+        this.bColor = cTier.intColor;
     }
 
     public CloudTier getCloudTier() {
@@ -31,14 +30,14 @@ public class CloudtechBlockItem extends BlockItem implements ICloudItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
-                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
+        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.tierName).withStyle(
+                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.hexColor))));
     }
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack pStack) {
         MutableComponent nameComponent = (new TextComponent("").append(new TranslatableComponent(this.getDescriptionId(pStack)).getString()));
-        Style nameStyle = Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor));
+        Style nameStyle = Style.EMPTY.withColor(TextColor.parseColor(this.cTier.hexColor));
         nameComponent.setStyle(nameStyle);
         return nameComponent;
     }

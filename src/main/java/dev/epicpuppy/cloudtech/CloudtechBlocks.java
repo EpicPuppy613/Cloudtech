@@ -4,8 +4,10 @@ import dev.epicpuppy.cloudtech.block.CloudBlock;
 import dev.epicpuppy.cloudtech.block.CloudtechBlock;
 import dev.epicpuppy.cloudtech.block.CloudtechBlockItem;
 import dev.epicpuppy.cloudtech.block.ICloudBlock;
+import dev.epicpuppy.cloudtech.block.machines.CloudSolidifierBlock;
 import dev.epicpuppy.cloudtech.item.ICloudItem;
 import dev.epicpuppy.cloudtech.util.CloudTier;
+import dev.epicpuppy.cloudtech.util.TieredBlockRegisterHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.item.ItemColors;
@@ -36,41 +38,62 @@ public class CloudtechBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Cloudtech.MOD_ID);
 
-    public static final RegistryObject[][] CLOUD_BLOCKS = generateCloudBlocks(Cloudtech.COLORS);
-    public static final RegistryObject[][] CLOUD_FRAMES = generateCloudFrames(Cloudtech.COLORS);
+    public static final TieredBlockRegisterHandler<CloudBlock> CLOUD_BLOCKS = generateCloudBlocks(Cloudtech.COLORS);
+    public static final TieredBlockRegisterHandler<CloudtechBlock> CLOUD_FRAMES = generateCloudFrames(Cloudtech.COLORS);
+    public static final TieredBlockRegisterHandler<CloudSolidifierBlock> CLOUD_SOLIDIFIERS = generateCloudSolidifiers(Cloudtech.COLORS);
 
-    public static RegistryObject[][] generateCloudBlocks(String[] colors) {
-        RegistryObject[][] clouds = new RegistryObject[2][16];
+    public static TieredBlockRegisterHandler<CloudBlock> generateCloudBlocks(String[] colors) {
+        RegistryObject<CloudBlock>[] blocks = new RegistryObject[16];
+        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
         int c = 0;
         for (String color : colors) {
             int finalC = c;
-            RegistryObject[] cloud_block = registerBlock(color + "_cloud_block", CloudTier.valueOf("T" + finalC), () ->
+            RegistryObject[] block = registerBlock(color + "_cloud_block", CloudTier.valueOf("T" + finalC), () ->
                             new CloudBlock(CloudTier.valueOf("T" + finalC), BlockBehaviour.Properties
                                     .of(Material.WOOL).color(blockColors[finalC])
                                     .sound(SoundType.WOOL).noOcclusion().strength(0.125f * (finalC + 1))),
                     CLOUDTECH_TAB);
-            clouds[0][c] = cloud_block[0];
-            clouds[1][c] = cloud_block[1];
+            blocks[c] = block[0];
+            items[c] = block[1];
             c++;
         }
-        return clouds;
+        return new TieredBlockRegisterHandler<>(blocks, items);
     }
 
-    public static RegistryObject[][] generateCloudFrames(String[] colors) {
-        RegistryObject[][] clouds = new RegistryObject[2][16];
+    public static TieredBlockRegisterHandler<CloudtechBlock> generateCloudFrames(String[] colors) {
+        RegistryObject<CloudtechBlock>[] blocks = new RegistryObject[16];
+        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
         int c = 0;
         for (String color : colors) {
             int finalC = c;
-            RegistryObject[] cloud_block = registerBlock(color + "_cloud_frame", CloudTier.valueOf("T" + finalC), () ->
+            RegistryObject[] block = registerBlock(color + "_cloud_frame", CloudTier.valueOf("T" + finalC), () ->
                             new CloudtechBlock(CloudTier.valueOf("T" + finalC), BlockBehaviour.Properties
                                     .of(Material.WOOL).color(blockColors[finalC])
                                     .sound(SoundType.WOOL).noOcclusion().strength(0.25f * (finalC + 1))),
                     CLOUDTECH_TAB);
-            clouds[0][c] = cloud_block[0];
-            clouds[1][c] = cloud_block[1];
+            blocks[c] = block[0];
+            items[c] = block[1];
             c++;
         }
-        return clouds;
+        return new TieredBlockRegisterHandler<>(blocks, items);
+    }
+
+    public static TieredBlockRegisterHandler<CloudSolidifierBlock> generateCloudSolidifiers(String[] colors) {
+        RegistryObject<CloudSolidifierBlock>[] blocks = new RegistryObject[16];
+        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
+        int c = 0;
+        for (String color : colors) {
+            int finalC = c;
+            RegistryObject[] block = registerBlock(color + "_cloud_solidifier", CloudTier.valueOf("T" + finalC), () ->
+                            new CloudSolidifierBlock(CloudTier.valueOf("T" + finalC), BlockBehaviour.Properties
+                                    .of(Material.STONE).color(blockColors[finalC])
+                                    .sound(SoundType.STONE).noOcclusion().strength(1f + 0.25f * (finalC + 1))),
+                    CLOUDTECH_TAB);
+            blocks[c] = block[0];
+            items[c] = block[1];
+            c++;
+        }
+        return new TieredBlockRegisterHandler<>(blocks, items);
     }
 
     private static RegistryObject[] registerBlock(String name, CloudTier tier, Supplier block, CreativeModeTab tab) {
@@ -81,19 +104,20 @@ public class CloudtechBlocks {
     }
 
     private static <T extends Block> RegistryObject<CloudtechBlockItem> registerBlockItem(String name, RegistryObject<T> block, CloudTier tier, CreativeModeTab tab) {
-        RegistryObject<CloudtechBlockItem> blockItem = CloudtechItems.ITEMS.register(name, () -> new CloudtechBlockItem(block.get(), tier, new Item.Properties().tab(tab)));
-        return blockItem;
+        return CloudtechItems.ITEMS.register(name, () -> new CloudtechBlockItem(block.get(), tier, new Item.Properties().tab(tab)));
     }
 
     public static void registerColors() {
         BlockColors blockColors = Minecraft.getInstance().getBlockColors();
         ItemColors itemColors = Minecraft.getInstance().getItemColors();
 
-        registerBlockColor(blockColors, CLOUD_BLOCKS[0]);
-        registerBlockColor(blockColors, CLOUD_FRAMES[0]);
+        registerBlockColor(blockColors, CLOUD_BLOCKS.BLOCKS);
+        registerBlockColor(blockColors, CLOUD_FRAMES.BLOCKS);
+        registerBlockColor(blockColors, CLOUD_SOLIDIFIERS.BLOCKS);
 
-        registerItemColor(itemColors, CLOUD_BLOCKS[1]);
-        registerItemColor(itemColors, CLOUD_FRAMES[1]);
+        registerItemColor(itemColors, CLOUD_BLOCKS.ITEMS);
+        registerItemColor(itemColors, CLOUD_FRAMES.ITEMS);
+        registerItemColor(itemColors, CLOUD_SOLIDIFIERS.ITEMS);
     }
 
     private static <T extends ICloudBlock> void registerBlockColor(BlockColors blockColors, RegistryObject<T>[] objects) {

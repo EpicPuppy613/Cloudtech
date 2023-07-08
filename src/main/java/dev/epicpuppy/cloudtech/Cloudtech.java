@@ -1,8 +1,11 @@
 package dev.epicpuppy.cloudtech;
 
 import com.mojang.logging.LogUtils;
-import dev.epicpuppy.cloudtech.events.ClientEvents;
+import dev.epicpuppy.cloudtech.block.entity.CloudtechBlockEntities;
+import dev.epicpuppy.cloudtech.screen.CloudSolidifierScreen;
+import dev.epicpuppy.cloudtech.screen.CloudtechMenuTypes;
 import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
@@ -30,14 +33,14 @@ public class Cloudtech
     public ItemColors itemColors;
 
     public static final class ToolStats {
-        public static final Integer[] LEVEL = {1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5};
-        public static final Integer[] USES = {100, 125, 150, 200, 300, 400, 500, 1200, 1400, 1600, 1800, 2000, 2250, 2500, 2750, 3000};
+        public static final Integer[] LEVEL = {1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6};
+        public static final Integer[] USES = {100, 125, 150, 200, 250, 300, 375, 475, 600, 750, 925, 1175, 1450, 1800, 2275, 2850};
         public static final Float[] SPEED = {4.0f, 4.5f, 5.0f, 6.0f, 6.5f, 7.0f, 7.5f, 8.0f, 8.25f, 8.5f, 8.75f, 9.0f, 9.25f, 9.5f, 9.75f, 10.0f};
-        public static final Float[] DAMAGE = {0.0f, 0.5f, 1.0f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f, 4.25f, 4.5f, 4.75f, 5.0f, 5.25f, 5.5f, 5.75f, 6.0f};
-        public static final Integer[] ENCHANTING = {10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30};
+        public static final Float[] DAMAGE = {0.0f, 0.5f, 1.0f, 1.5f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f, 4.5f, 5.0f, 5.5f, 6.0f, 6.5f, 7.0f, 7.5f};
+        public static final Integer[] ENCHANTING = {10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40};
         public static final TagKey[] TAGS = {
                 BlockTags.NEEDS_STONE_TOOL, BlockTags.NEEDS_STONE_TOOL, BlockTags.NEEDS_STONE_TOOL, BlockTags.NEEDS_IRON_TOOL,
-                BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_DIAMOND_TOOL,
+                BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_IRON_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL,
                 BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL,
                 BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL, BlockTags.NEEDS_DIAMOND_TOOL
         };
@@ -50,6 +53,10 @@ public class Cloudtech
         public static final Float[] KB_RESIST = {0f, 0f, 0f, 0f, 0f, 0f, 0.01f, 0.02f, 0.03f, 0.04f, 0.05f, 0.06f, 0.07f, 0.08f, 0.09f, 0.1f};
     }
 
+    public static final class CatalystStats {
+        // Time in ticks required to generate a cloud block of the given tier, higher tier solidifiers are faster but require power
+        public static final Integer[] TIME = {4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536, 131072};
+    }
 
     public Cloudtech()
     {
@@ -58,6 +65,9 @@ public class Cloudtech
 
         CloudtechItems.register(eventBus);
         CloudtechBlocks.register(eventBus);
+
+        CloudtechBlockEntities.register(eventBus);
+        CloudtechMenuTypes.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
@@ -70,10 +80,13 @@ public class Cloudtech
     private void clientSetup(final FMLClientSetupEvent event) {
         int c = 0;
         for (String color : COLORS) {
-            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_BLOCKS[0][c].get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_FRAMES[0][c].get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_BLOCKS.BLOCKS[c].get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_FRAMES.BLOCKS[c].get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer((Block) CloudtechBlocks.CLOUD_SOLIDIFIERS.BLOCKS[c].get(), RenderType.translucent());
             c++;
         }
+
+        MenuScreens.register(CloudtechMenuTypes.CLOUD_SOLIDIFIER_MENU.get(), CloudSolidifierScreen::new);
 
         CloudtechItems.registerColors();
         CloudtechBlocks.registerColors();

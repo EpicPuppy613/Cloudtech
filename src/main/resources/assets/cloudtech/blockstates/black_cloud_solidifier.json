@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "cloudtech:block/black_cloud_solidifier"
+        },
+        "facing=south": {
+            "model": "cloudtech:block/black_cloud_solidifier",
+            "y": 180
+        },
+        "facing=east": {
+            "model": "cloudtech:block/black_cloud_solidifier",
+            "y": 90
+        },
+        "facing=west": {
+            "model": "cloudtech:block/black_cloud_solidifier",
+            "y": 270
+        }
+    }
+}

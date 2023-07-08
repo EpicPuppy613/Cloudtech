@@ -21,7 +21,7 @@ public class CloudArmorItem extends ArmorItem implements ICloudItem {
     public CloudArmorItem(CloudTier cTier, CloudArmorMaterial pMaterial, EquipmentSlot pSlot, Properties pProperties) {
         super(pMaterial, pSlot, pProperties);
         this.cTier = cTier;
-        this.toolColor = cTier.tColor;
+        this.toolColor = cTier.intColor;
     }
 
     @Override
@@ -34,18 +34,18 @@ public class CloudArmorItem extends ArmorItem implements ICloudItem {
         if (Screen.hasShiftDown()) {
 
             pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.durability").withStyle(
-                    Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))).append(String.valueOf(pStack.getMaxDamage() - pStack.getDamageValue())));
+                    Style.EMPTY.withColor(TextColor.parseColor(this.cTier.hexColor))).append(String.valueOf(pStack.getMaxDamage() - pStack.getDamageValue())));
         } else {
             pTooltipComponents.add(new TranslatableComponent("tooltip.cloudtech.view"));
         }
-        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.pName).withStyle(
-                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor))));
+        pTooltipComponents.add(new TranslatableComponent("tier.cloudtech." + this.cTier.tierName).withStyle(
+                Style.EMPTY.withColor(TextColor.parseColor(this.cTier.hexColor))));
     }
 
     @Override
     public @NotNull Component getName(@NotNull ItemStack pStack) {
         MutableComponent nameComponent = (new TextComponent("").append(new TranslatableComponent(this.getDescriptionId(pStack)).getString()));
-        Style nameStyle = Style.EMPTY.withColor(TextColor.parseColor(this.cTier.pColor));
+        Style nameStyle = Style.EMPTY.withColor(TextColor.parseColor(this.cTier.hexColor));
         nameComponent.setStyle(nameStyle);
         return nameComponent;
     }

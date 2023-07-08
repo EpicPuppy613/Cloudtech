@@ -1,0 +1,11 @@
+{
+  "parent": "cloudtech:block/cloud_machine_block",
+  "textures": {
+    "up": "cloudtech:block/cloud_machine_hole",
+    "north": "cloudtech:block/cloud_solidifier_front",
+    "west": "cloudtech:block/cloud_solidifier_fan",
+    "east": "cloudtech:block/cloud_solidifier_fan",
+    "south": "cloudtech:block/cloud_machine_blank",
+    "down": "cloudtech:block/cloud_machine_blank"
+  }
+}

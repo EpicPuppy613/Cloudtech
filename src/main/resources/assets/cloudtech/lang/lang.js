@@ -1,19 +1,15 @@
 const fs = require('fs');
-
 const COLORS = [
     "white", "light_gray", "gray", "black", "red", "orange", "yellow", "lime",
     "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink", "brown"];
 
-const COLORS_NAME = [
-    "White", "Light Gray", "Gray", "Black", "Red", "Orange", "Yellow", "Lime",
-    "Green", "Cyan", "Light Blue", "Blue", "Purple", "Magenta", "Pink", "Brown"
-]
+const lang = JSON.parse(fs.readFileSync('en_us.json'));
 
-const langfile = fs.readFileSync("en_us_prev.json");
-const lang = JSON.parse(langfile);
-
-for (var c = 0; c < COLORS.length; c++) {
-    lang["block.cloudtech." + COLORS[c] + "_cloud_frame"] = COLORS_NAME[c] + " Cloud Frame";
+for (const color of COLORS) {
+    lang["item.cloudtech." + color + "_cloud_sword"] = color[0].toUpperCase() + color.slice(1) + " Cloud Sword";
+    lang["item.cloudtech." + color + "_cloud_pickaxe"] = color[0].toUpperCase() + color.slice(1) + " Cloud Pickaxe";
+    lang["item.cloudtech." + color + "_cloud_axe"] = color[0].toUpperCase() + color.slice(1) + " Cloud Axe";
+    lang["item.cloudtech." + color + "_cloud_shovel"] = color[0].toUpperCase() + color.slice(1) + " Cloud Shovel";
+    lang["item.cloudtech." + color + "_cloud_hoe"] = color[0].toUpperCase() + color.slice(1) + " Cloud Hoe";
 }
 
-fs.writeFileSync("en_us.json", JSON.stringify(lang, null, 4));
