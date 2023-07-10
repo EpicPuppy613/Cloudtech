@@ -29,6 +29,9 @@ import static dev.epicpuppy.cloudtech.util.CloudtechCreativeTab.CLOUDTECH_TAB;
 
 public class CloudtechBlocks {
 
+    private interface RegisterBlockOperator {
+        public RegistryObject[] register(String color, int tier);
+    }
     private static final MaterialColor[] blockColors = {
             MaterialColor.WOOL, MaterialColor.COLOR_LIGHT_GRAY, MaterialColor.COLOR_GRAY, MaterialColor.COLOR_RED,
             MaterialColor.COLOR_ORANGE, MaterialColor.COLOR_YELLOW, MaterialColor.COLOR_LIGHT_GREEN, MaterialColor.COLOR_GREEN,
@@ -38,57 +41,28 @@ public class CloudtechBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Cloudtech.MOD_ID);
 
-    public static final TieredBlockRegisterHandler<CloudBlock> CLOUD_BLOCKS = generateCloudBlocks(Cloudtech.COLORS);
-    public static final TieredBlockRegisterHandler<CloudtechBlock> CLOUD_FRAMES = generateCloudFrames(Cloudtech.COLORS);
-    public static final TieredBlockRegisterHandler<CloudSolidifierBlock> CLOUD_SOLIDIFIERS = generateCloudSolidifiers(Cloudtech.COLORS);
-
-    public static TieredBlockRegisterHandler<CloudBlock> generateCloudBlocks(String[] colors) {
-        RegistryObject<CloudBlock>[] blocks = new RegistryObject[16];
+    public static final TieredBlockRegisterHandler<CloudBlock> CLOUD_BLOCKS = generateBlocks(Cloudtech.COLORS, (color, tier) ->
+            registerBlock(color + "_cloud_block", CloudTier.valueOf("T" + tier), () ->
+                    new CloudBlock(CloudTier.valueOf("T" + tier), BlockBehaviour.Properties
+                            .of(Material.WOOL).color(blockColors[tier]).sound(SoundType.WOOL)
+                            .noOcclusion().strength(0.125f * (tier + 1))), CLOUDTECH_TAB)
+    );
+    public static final TieredBlockRegisterHandler<CloudtechBlock> CLOUD_FRAMES = generateBlocks(Cloudtech.COLORS, (color, tier) ->
+            registerBlock(color + "_cloud_frame", CloudTier.valueOf("T" + tier), () ->
+                    new CloudtechBlock(CloudTier.valueOf("T" + tier), BlockBehaviour.Properties
+                            .of(Material.STONE).color(blockColors[tier]).requiresCorrectToolForDrops().sound(SoundType.STONE)
+                            .noOcclusion().strength(1f + 0.25f * (tier + 1))), CLOUDTECH_TAB));
+    public static final TieredBlockRegisterHandler<CloudSolidifierBlock> CLOUD_SOLIDIFIERS = generateBlocks(Cloudtech.COLORS, (color, tier) ->
+            registerBlock(color + "_cloud_solidifier", CloudTier.valueOf("T" + tier), () ->
+                    new CloudSolidifierBlock(CloudTier.valueOf("T" + tier), BlockBehaviour.Properties
+                            .of(Material.STONE).color(blockColors[tier]).requiresCorrectToolForDrops().sound(SoundType.STONE)
+                            .noOcclusion().strength(1f + 0.25f * (tier + 1))), CLOUDTECH_TAB));
+    public static <T> TieredBlockRegisterHandler<T> generateBlocks(String[] colors, RegisterBlockOperator register) {
+        RegistryObject<T>[] blocks = new RegistryObject[16];
         RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
         int c = 0;
         for (String color : colors) {
-            int finalC = c;
-            RegistryObject[] block = registerBlock(color + "_cloud_block", CloudTier.valueOf("T" + finalC), () ->
-                            new CloudBlock(CloudTier.valueOf("T" + finalC), BlockBehaviour.Properties
-                                    .of(Material.WOOL).color(blockColors[finalC])
-                                    .sound(SoundType.WOOL).noOcclusion().strength(0.125f * (finalC + 1))),
-                    CLOUDTECH_TAB);
-            blocks[c] = block[0];
-            items[c] = block[1];
-            c++;
-        }
-        return new TieredBlockRegisterHandler<>(blocks, items);
-    }
-
-    public static TieredBlockRegisterHandler<CloudtechBlock> generateCloudFrames(String[] colors) {
-        RegistryObject<CloudtechBlock>[] blocks = new RegistryObject[16];
-        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
-        int c = 0;
-        for (String color : colors) {
-            int finalC = c;
-            RegistryObject[] block = registerBlock(color + "_cloud_frame", CloudTier.valueOf("T" + finalC), () ->
-                            new CloudtechBlock(CloudTier.valueOf("T" + finalC), BlockBehaviour.Properties
-                                    .of(Material.WOOL).color(blockColors[finalC])
-                                    .sound(SoundType.WOOL).noOcclusion().strength(0.25f * (finalC + 1))),
-                    CLOUDTECH_TAB);
-            blocks[c] = block[0];
-            items[c] = block[1];
-            c++;
-        }
-        return new TieredBlockRegisterHandler<>(blocks, items);
-    }
-
-    public static TieredBlockRegisterHandler<CloudSolidifierBlock> generateCloudSolidifiers(String[] colors) {
-        RegistryObject<CloudSolidifierBlock>[] blocks = new RegistryObject[16];
-        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
-        int c = 0;
-        for (String color : colors) {
-            int finalC = c;
-            RegistryObject[] block = registerBlock(color + "_cloud_solidifier", CloudTier.valueOf("T" + finalC), () ->
-                            new CloudSolidifierBlock(CloudTier.valueOf("T" + finalC), BlockBehaviour.Properties
-                                    .of(Material.STONE).color(blockColors[finalC])
-                                    .sound(SoundType.STONE).noOcclusion().strength(1f + 0.25f * (finalC + 1))),
-                    CLOUDTECH_TAB);
+            RegistryObject[] block = register.register(color, c);
             blocks[c] = block[0];
             items[c] = block[1];
             c++;
