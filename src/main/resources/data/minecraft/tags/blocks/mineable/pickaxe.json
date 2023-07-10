@@ -1,6 +1,37 @@
 {
   "replace": false,
   "values": [
-
+    "cloudtech:white_cloud_frame",
+    "cloudtech:white_cloud_solidifier",
+    "cloudtech:light_gray_cloud_frame",
+    "cloudtech:light_gray_cloud_solidifier",
+    "cloudtech:gray_cloud_frame",
+    "cloudtech:gray_cloud_solidifier",
+    "cloudtech:red_cloud_frame",
+    "cloudtech:red_cloud_solidifier",
+    "cloudtech:orange_cloud_frame",
+    "cloudtech:orange_cloud_solidifier",
+    "cloudtech:yellow_cloud_frame",
+    "cloudtech:yellow_cloud_solidifier",
+    "cloudtech:lime_cloud_frame",
+    "cloudtech:lime_cloud_solidifier",
+    "cloudtech:green_cloud_frame",
+    "cloudtech:green_cloud_solidifier",
+    "cloudtech:cyan_cloud_frame",
+    "cloudtech:cyan_cloud_solidifier",
+    "cloudtech:light_blue_cloud_frame",
+    "cloudtech:light_blue_cloud_solidifier",
+    "cloudtech:blue_cloud_frame",
+    "cloudtech:blue_cloud_solidifier",
+    "cloudtech:purple_cloud_frame",
+    "cloudtech:purple_cloud_solidifier",
+    "cloudtech:magenta_cloud_frame",
+    "cloudtech:magenta_cloud_solidifier",
+    "cloudtech:pink_cloud_frame",
+    "cloudtech:pink_cloud_solidifier",
+    "cloudtech:brown_cloud_frame",
+    "cloudtech:brown_cloud_solidifier",
+    "cloudtech:black_cloud_frame",
+    "cloudtech:black_cloud_solidifier"
   ]
 }
