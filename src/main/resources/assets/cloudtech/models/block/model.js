@@ -7,6 +7,6 @@ const fs = require('fs');
 
 for (const color of COLORS) {
     var model = {};
-    model.parent = "cloudtech:block/cloud_solidifier";
-    fs.writeFileSync(color + "_cloud_solidifier.json", JSON.stringify(model, null, 4));
+    model.parent = "cloudtech:block/solid_cloud_bricks";
+    fs.writeFileSync(color + "_solid_cloud_bricks.json", JSON.stringify(model, null, 4));
 }

@@ -57,9 +57,19 @@ public class CloudtechBlocks {
                     new CloudSolidifierBlock(CloudTier.valueOf("T" + tier), BlockBehaviour.Properties
                             .of(Material.STONE).color(blockColors[tier]).requiresCorrectToolForDrops().sound(SoundType.STONE)
                             .noOcclusion().strength(1f + 0.25f * (tier + 1))), CLOUDTECH_TAB));
+    public static final TieredBlockRegisterHandler<CloudtechBlock> SOLID_CLOUDS = generateBlocks(Cloudtech.COLORS, (color, tier) ->
+            registerBlock(color + "_solid_cloud", CloudTier.valueOf("T" + tier), () ->
+                    new CloudtechBlock(CloudTier.valueOf("T" + tier), BlockBehaviour.Properties
+                            .of(Material.STONE).color(blockColors[tier]).requiresCorrectToolForDrops().sound(SoundType.STONE)
+                            .noOcclusion().strength(1f + 0.25f * (tier + 1))), CLOUDTECH_TAB));
+    public static final TieredBlockRegisterHandler<CloudtechBlock> SOLID_CLOUD_BRICKS = generateBlocks(Cloudtech.COLORS, (color, tier) ->
+            registerBlock(color + "_solid_cloud_bricks", CloudTier.valueOf("T" + tier), () ->
+                    new CloudtechBlock(CloudTier.valueOf("T" + tier), BlockBehaviour.Properties
+                            .of(Material.STONE).color(blockColors[tier]).requiresCorrectToolForDrops().sound(SoundType.STONE)
+                            .noOcclusion().strength(1f + 0.25f * (tier + 1))), CLOUDTECH_TAB));
     public static <T> TieredBlockRegisterHandler<T> generateBlocks(String[] colors, RegisterBlockOperator register) {
-        RegistryObject<T>[] blocks = new RegistryObject[16];
-        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[16];
+        RegistryObject<T>[] blocks = new RegistryObject[colors.length];
+        RegistryObject<CloudtechBlockItem>[] items = new RegistryObject[colors.length];
         int c = 0;
         for (String color : colors) {
             RegistryObject[] block = register.register(color, c);
@@ -88,10 +98,14 @@ public class CloudtechBlocks {
         registerBlockColor(blockColors, CLOUD_BLOCKS.BLOCKS);
         registerBlockColor(blockColors, CLOUD_FRAMES.BLOCKS);
         registerBlockColor(blockColors, CLOUD_SOLIDIFIERS.BLOCKS);
+        registerBlockColor(blockColors, SOLID_CLOUDS.BLOCKS);
+        registerBlockColor(blockColors, SOLID_CLOUD_BRICKS.BLOCKS);
 
         registerItemColor(itemColors, CLOUD_BLOCKS.ITEMS);
         registerItemColor(itemColors, CLOUD_FRAMES.ITEMS);
         registerItemColor(itemColors, CLOUD_SOLIDIFIERS.ITEMS);
+        registerItemColor(itemColors, SOLID_CLOUDS.ITEMS);
+        registerItemColor(itemColors, SOLID_CLOUD_BRICKS.ITEMS);
     }
 
     private static <T extends ICloudBlock> void registerBlockColor(BlockColors blockColors, RegistryObject<T>[] objects) {

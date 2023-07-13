@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xx",
+        "xx"
+    ],
+    "key": {
+        "x": {
+            "item": "cloudtech:magenta_solid_cloud"
+        }
+    },
+    "result": {
+        "item": "cloudtech:magenta_solid_cloud_bricks",
+        "count": 4
+    }
+}

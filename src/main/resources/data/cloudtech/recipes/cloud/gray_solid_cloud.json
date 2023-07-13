@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xx",
+        "xx"
+    ],
+    "key": {
+        "x": {
+            "item": "cloudtech:gray_cloud_block"
+        }
+    },
+    "result": {
+        "item": "cloudtech:gray_solid_cloud"
+    }
+}

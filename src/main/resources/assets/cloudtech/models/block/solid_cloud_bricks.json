@@ -1,0 +1,7 @@
+{
+  "parent": "cloudtech:block/color_block",
+  "textures": {
+    "particle": "cloudtech:block/solid_cloud_bricks",
+    "block": "cloudtech:block/solid_cloud_bricks"
+  }
+}

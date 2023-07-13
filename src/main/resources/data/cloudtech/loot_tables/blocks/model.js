@@ -14,9 +14,9 @@ for (const color of COLORS) {
     model.pools[0].entries = [];
     model.pools[0].entries.push({});
     model.pools[0].entries[0].type = "minecraft:item";
-    model.pools[0].entries[0].name = "cloudtech:" + color + "_cloud_solidifier";
+    model.pools[0].entries[0].name = "cloudtech:" + color + "_solid_cloud_bricks";
     model.pools[0].conditions = [];
     model.pools[0].conditions.push({});
     model.pools[0].conditions[0].condition = "minecraft:survives_explosion";
-    fs.writeFileSync(color + "_cloud_solidifier.json", JSON.stringify(model, null, 4));
+    fs.writeFileSync(color + "_solid_cloud_bricks.json", JSON.stringify(model, null, 4));
 }

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "xx",
+        "xx"
+    ],
+    "key": {
+        "x": {
+            "item": "cloudtech:yellow_cloud_block"
+        }
+    },
+    "result": {
+        "item": "cloudtech:yellow_solid_cloud"
+    }
+}

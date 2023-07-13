@@ -11,5 +11,6 @@ const HEX = [
 ]
 
 for (const color of COLORS) {
-    fs.writeFileSync(color + "_cloud_solidifier.json", fs.readFileSync("white_cloud_solidifier.json"));
+    fs.writeFileSync(color + "_solid_cloud.json", fs.readFileSync("white_solid_cloud.json"));
+    fs.writeFileSync(color + "_solid_cloud_bricks.json", fs.readFileSync("white_solid_cloud_bricks.json"));
 }
